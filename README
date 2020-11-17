@@ -3,6 +3,27 @@ dmenu - dynamic menu
 dmenu is an efficient dynamic menu for X.
 
 
+## My changes:
+
+# dmenu patches
+
+- caseinsensitive20200523: case insensitive by default, make case sensitive with -s option
+- printpinttext20190822: return input to stdout, not first item list
+- line height patch
+- list full width
+  - fixed right edge not expanding to screen edge
+  - fixed gap after prompt in one line layouts
+- mouse support with hoverred item getting "selected" style
+- horiz scroll, no append... (seems to do nothing)
+- no sort -S option
+- password -P option
+- fuzzy match
+
+
+End of fork.
+
+---
+
 Requirements
 ------------
 In order to build dmenu you need the Xlib header files.

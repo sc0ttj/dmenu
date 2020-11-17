@@ -3,9 +3,11 @@
 dmenu \- dynamic menu
 .SH SYNOPSIS
 .B dmenu
-.RB [ \-bfiv ]
+.RB [ \-bfitv ]
 .RB [ \-l
 .IR lines ]
+.RB [ \-h
+.IR height ]
 .RB [ \-m
 .IR monitor ]
 .RB [ \-p
@@ -22,6 +24,8 @@ dmenu \- dynamic menu
 .IR color ]
 .RB [ \-w
 .IR windowid ]
+.RB [ \-n
+.IR number ]
 .P
 .BR dmenu_run " ..."
 .SH DESCRIPTION
@@ -47,8 +51,14 @@ is faster, but will lock up X until stdin reaches end\-of\-file.
 .B \-i
 dmenu matches menu items case insensitively.
 .TP
+.B \-S
+dmenu does not sort menu items after matching.
+.TP
 .BI \-l " lines"
 dmenu lists items vertically, with the given number of lines.
+.TP
+.BI \-h " height"
+dmenu uses a menu line of at least 'height' pixels tall, but no less than 8.
 .TP
 .BI \-m " monitor"
 dmenu is displayed on the monitor number supplied. Monitor numbers are starting
@@ -75,11 +85,17 @@ defines the selected background color.
 .BI \-sf " color"
 defines the selected foreground color.
 .TP
+.B \-t
+Return key prints input text instead of selection.
+.TP
 .B \-v
 prints version information to stdout, then exits.
 .TP
 .BI \-w " windowid"
 embed into windowid.
+.TP
+.BI \-n " number"
+preseslected item starting from 0.
 .SH USAGE
 dmenu is completely controlled by the keyboard.  Items are selected using the
 arrow keys, page up, page down, home, and end.
@@ -89,13 +105,14 @@ Copy the selected item to the input field.
 .TP
 .B Return
 Confirm selection.  Prints the selected item to stdout and exits, returning
-success.
+success. If \-t option is given it confirms input instead of selection.
 .TP
 .B Ctrl-Return
 Confirm selection.  Prints the selected item to stdout and continues.
 .TP
 .B Shift\-Return
 Confirm input.  Prints the input text to stdout and exits, returning success.
+If \-t option is given it confirms selection instead of input.
 .TP
 .B Escape
 Exit without selecting an item, returning failure.
